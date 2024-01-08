@@ -7,18 +7,33 @@ public class Main {
     public static void main(String[] args) {
         StudentRepository sr = new StudentRepository();
 
-        System.out.println("Choose Options: ");
-        System.out.println("1. Add Students");
-        System.out.println("2. Update Students");
-        System.out.println("3. Retrieve Student by Id");
-        System.out.println("4. Retrieve Student by Name");
+        int op = 1;
 
-        int op = sc.nextInt();
-        switch(op){
-            case 1: option1(sr);break;
-            case 2: option2(sr);break;
-            case 3: option2(sr);break;
-            case 4: option2(sr);break;
+        while(op==1){
+            System.out.println("Choose Options: ");
+            System.out.println("1. Add Students");
+            System.out.println("2. Update Students");
+            System.out.println("3. Retrieve Student by Id");
+            System.out.println("4. Retrieve Student by Name");
+            System.out.println("5. Exit");
+            int choice = sc.nextInt();
+            switch(choice) {
+                case 1:
+                    option1(sr);
+                    break;
+                case 2:
+                    option2(sr);
+                    break;
+                case 3:
+                    option3(sr);
+                    break;
+                case 4:
+                    option4(sr);
+                    break;
+                case 5:
+                    op = 0;
+                    break;
+            }
         }
     }
 
