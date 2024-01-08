@@ -12,7 +12,6 @@ public class Main {
         System.out.println("2. Update Students");
         System.out.println("3. Retrieve Student by Id");
         System.out.println("4. Retrieve Student by Name");
-//        System.out.println("5. Exit");
 
         int op = 1;
 
