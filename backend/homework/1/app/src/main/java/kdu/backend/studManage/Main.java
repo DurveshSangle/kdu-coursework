@@ -33,6 +33,7 @@ public class Main {
                 case 5:
                     op = 0;
                     break;
+                default: break;
             }
         }
     }
