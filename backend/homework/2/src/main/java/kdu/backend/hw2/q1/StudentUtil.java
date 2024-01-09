@@ -52,10 +52,12 @@ public class StudentUtil {
 
         double[] gpaOfStudents = calculateGPA(studentIdList,studentsGrades);
 
-        logger.info("GPA's of students are: " + Arrays.toString(gpaOfStudents));
+        String str1 = "GPA's of students are: " + Arrays.toString(gpaOfStudents);
+        logger.info(str1);
 
         int[] studentBetweenLowerHigher = getStudentsByGPA(lower,higher,studentIdList,studentsGrades);
 
-        logger.info("Students whose GPA lies between "+ lower +" and "+ higher +" are: " + Arrays.toString(studentBetweenLowerHigher));
+        String str2 = "Students whose GPA lies between "+ lower +" and "+ higher +" are: " + Arrays.toString(studentBetweenLowerHigher);
+        logger.info(str2);
     }
 }

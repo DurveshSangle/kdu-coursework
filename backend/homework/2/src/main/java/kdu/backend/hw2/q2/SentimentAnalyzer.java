@@ -80,7 +80,7 @@ public class SentimentAnalyzer {
         String review = "Haven't been here in years! Fantastic service and the food was delicious! Definetly will be a frequent flyer! Francisco was very attentive";
 
         int[] featureOpinions = detectProsAndCons(review.toLowerCase(),featureSet,posOpinionWords,negOpinionWords);
-
-        logger.info("Opinions on Features: " + Arrays.toString(featureOpinions));
+        String str = "Opinions on Features: " + Arrays.toString(featureOpinions);
+        logger.info(str);
     }
 }
