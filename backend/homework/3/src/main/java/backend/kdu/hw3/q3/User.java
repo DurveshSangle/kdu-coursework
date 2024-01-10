@@ -11,6 +11,11 @@ public class User {
     private boolean insured;
     private HealthInsurancePlan insurancePlan=null;
 
+    public User(){
+
+    }
+    public User(long id, String firstName, String lastName, String gender, String email) {
+    }
     public long getId() {
         return id;
     }
