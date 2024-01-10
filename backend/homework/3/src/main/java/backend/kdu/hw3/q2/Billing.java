@@ -28,16 +28,4 @@ public class Billing {
         return payments;
     }
 
-    
-    public static void main(String[] args) {
-        logger lg = new logger();
-
-        HealthInsurancePlan insurancePlan = new PlatinumPlan();
-        Patient patient = new Patient(1,"Alice","Bob","Male","email@email.com",11,true,insurancePlan);
-
-        double[] payments = Billing.computePaymentAmount(patient, 1000.0);
-
-        String output = "\nAmount covered By insurance company is: " + payments[0] +"\nAmount that patient has to pay is: " + payments[1];
-        lg.logInfo(output);
-    }
 }

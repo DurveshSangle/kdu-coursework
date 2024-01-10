@@ -9,14 +9,6 @@ public class User {
     private String gender;
     private String email;
 
-    public User(long id, String firstName, String lastName, String gender, String email){
-        this.id= id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.gender = gender;
-        this.email = email;
-    }
-
     public long getId() {
         return id;
     }

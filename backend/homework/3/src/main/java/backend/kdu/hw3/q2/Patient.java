@@ -4,13 +4,6 @@ public class Patient extends User {
     private long patientId;
     private boolean insured;
     private HealthInsurancePlan insurancePlan=null;
-
-    public Patient(long id,String firstName,String lastName,String gender,String email,long patientId,boolean insured,HealthInsurancePlan insurancePlan){
-        super(id,firstName,lastName,gender,email);
-        this.patientId = patientId;
-        this.insured = insured;
-        this.insurancePlan = insurancePlan;
-    }
     public long getPatientId(){
         return patientId;
     }
