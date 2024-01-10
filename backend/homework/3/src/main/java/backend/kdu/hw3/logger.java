@@ -1,9 +1,10 @@
 package backend.kdu.hw3;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class logger {
-    Logger logger = LogManager.getLogger(logger.class);
+    Logger logger = LoggerFactory.getLogger(logger.class);
 
     public void logWarn(String msg){
         logger.warn(msg);

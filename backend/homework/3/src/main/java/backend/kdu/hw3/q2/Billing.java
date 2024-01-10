@@ -20,12 +20,14 @@ public class Billing {
         else if(patientInsurancePlan instanceof GoldPlan) amountThatPatientHasToPay = Math.max(0,amountThatPatientHasToPay-40.0000);
         else if(patientInsurancePlan instanceof SilverPlan) amountThatPatientHasToPay = Math.max(0,amountThatPatientHasToPay-30);
         else if(patientInsurancePlan instanceof BronzePlan) amountThatPatientHasToPay = Math.max(0,amountThatPatientHasToPay-25);
+        else amountThatPatientHasToPay = Math.max(0,amountThatPatientHasToPay-20);
 
+        amountCoveredByInsuranceCompany =  amount - amountThatPatientHasToPay;
         payments[0] = amountCoveredByInsuranceCompany;
         payments[1] = amountThatPatientHasToPay;
         return payments;
     }
-
+    
     public static void main(String[] args) {
         logger lg = new logger();
 
