@@ -4,10 +4,11 @@ import backend.kdu.hw3.q1.User;
 
 public class Patient extends User {
     private long patientId;
-    public Patient(long id, String firstName, String lastName, String gender, String email, long patientId, boolean insured, HealthInsurancePlan insurancePlan){
-        super(id,firstName,lastName,gender,email);
-        this.patientId = patientId;
+
+    public Patient(long id, String firstName, String lastName, String gender, String email) {
+        super(id, firstName, lastName, gender, email);
     }
+
     public long getPatientId(){
         return patientId;
     }

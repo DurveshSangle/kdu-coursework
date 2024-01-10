@@ -6,13 +6,6 @@ public class Staff extends User{
     private String description;
     private double salary;
 
-    public Staff(long id,String firstName,String lastName,String gender,String email,long staffId,int yearsOfExperience,String description,double salary){
-        super(id,firstName,lastName,gender,email);
-        this.staffId = staffId;
-        this.yearsOfExperience = yearsOfExperience;
-        this.description = description;
-        this.salary = salary;
-    }
     public long getStaffId(){
         return staffId;
     }
