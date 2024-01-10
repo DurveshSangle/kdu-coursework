@@ -1,7 +1,5 @@
 package backend.kdu.hw3.q2;
 
-import backend.kdu.hw3.q1.User;
-
 public class Patient extends User {
     private long patientId;
     private boolean insured;
