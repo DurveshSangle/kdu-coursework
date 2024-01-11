@@ -1,6 +1,6 @@
 package kdu.backend.hw4.q2;
 
-import kdu.backend.hw4.logging;
+import kdu.backend.hw4.Logging;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class TicketReservation {
     private List<Passenger> confirmedList = new ArrayList<>();
     private Deque<Passenger> waitingList = new ArrayDeque<>();
 
-    public static final logging log = new logging();
+    public static final Logging log = new Logging();
 
     public boolean isConfirmedListFull(){
         return (confirmedList.size()==CONFIRMEDLIST_LIMIT);
@@ -33,7 +33,7 @@ public class TicketReservation {
      * @param lastName
      * @param age
      * @param gender
-     * @param travelClass it can be economy or business
+     * @param travelClass it can be economy or travelClass
      * @param confirmationNumber it is an alpha-numeric value, e.g., "C9"
      *
      * @return true if booked else false
@@ -92,23 +92,29 @@ public class TicketReservation {
 
     public static void main(String[] args) {
         TicketReservation ticketReservation = new TicketReservation();
+        
+        String firstName = "Durvesh";
+        String lastName = "Sangle";
+        int age = 21;
+        String gender = "male";
+        String travelClass = "business";
         /**
          * book 10 flights at first then 11th would be waiting ticket
          * */
-        ticketReservation.bookFlight("Durvesh","Sangle",21,"male","business","B4");
-        ticketReservation.bookFlight("Durvesh1","Sangle",21,"male","business","Z4");
-        ticketReservation.bookFlight("Durvesh2","Sangle",21,"male","business","E4");
-        ticketReservation.bookFlight("Durvesh2","Sangle",21,"male","business","T4");
-        ticketReservation.bookFlight("Durvesh2","Sangle",21,"male","business","K4");
-        ticketReservation.bookFlight("Durvesh2","Sangle",21,"male","business","I4");
-        ticketReservation.bookFlight("Durvesh2","Sangle",21,"male","business","P4");
-        ticketReservation.bookFlight("Durvesh2","Sangle",21,"male","business","C4");
-        ticketReservation.bookFlight("Durvesh2","Sangle",21,"male","business","N4");
-        ticketReservation.bookFlight("Durvesh2","Sangle",21,"male","business","M4");
+        ticketReservation.bookFlight(firstName,"lastName",age,"gender","travelClass","B4");
+        ticketReservation.bookFlight("firstName","lastName",age,"gender","travelClass","Z4");
+        ticketReservation.bookFlight("firstName","lastName",age,"gender","travelClass","E4");
+        ticketReservation.bookFlight("firstName","lastName",age,"gender","travelClass","T4");
+        ticketReservation.bookFlight("firstName","lastName",age,"gender","travelClass","K4");
+        ticketReservation.bookFlight("firstName","lastName",age,"gender","travelClass","I4");
+        ticketReservation.bookFlight("firstName","lastName",age,"gender","travelClass","P4");
+        ticketReservation.bookFlight("firstName","lastName",age,"gender","travelClass","C4");
+        ticketReservation.bookFlight("firstName","lastName",age,"gender","travelClass","N4");
+        ticketReservation.bookFlight("firstName","lastName",age,"gender","travelClass","M4");
         /**
          * 11th booking
          * */
-        ticketReservation.bookFlight("Durvesh2","Sangle",21,"male","business","L4");
+        ticketReservation.bookFlight("firstName","lastName",age,"gender","travelClass","L4");
         /**
          * cancelling ticket with wrong confirmation number
          */

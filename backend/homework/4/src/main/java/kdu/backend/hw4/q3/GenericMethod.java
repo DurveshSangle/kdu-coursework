@@ -1,6 +1,6 @@
 package kdu.backend.hw4.q3;
 
-import kdu.backend.hw4.logging;
+import kdu.backend.hw4.Logging;
 
 import java.util.Arrays;
 
@@ -23,7 +23,7 @@ public class GenericMethod {
 
     public static void main(String[] args) {
         GenericMethod genericMethod = new GenericMethod();
-        logging log = new logging();
+        Logging log = new Logging();
 
         Integer[] integerArray = {10,20,50,70};
         String[] stringArray = {"hello","cute","cat"};

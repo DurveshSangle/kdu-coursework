@@ -1,13 +1,13 @@
 package kdu.backend.hw4.q1;
 
-import kdu.backend.hw4.logging;
+import kdu.backend.hw4.Logging;
 
 import java.util.Arrays;
 
 public class StudentUtil {
 
 
-    public static final logging log = new logging();
+    public static final Logging log = new Logging();
 
     /**
      * Returns the calculated GPA of students
@@ -58,7 +58,8 @@ public class StudentUtil {
      * */
     public static int[] getStudentsByGPA(double lower, double higher, int[] studentIdList, char[][] studentGrades){
         if (lower < 0 || higher < 0 || lower > higher) {
-            return null;
+            int[] output = {};
+            return output;
         }
         double[] gpas;
         try{

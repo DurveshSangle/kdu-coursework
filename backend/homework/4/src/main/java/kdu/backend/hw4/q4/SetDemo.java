@@ -1,12 +1,12 @@
 package kdu.backend.hw4.q4;
 
-import kdu.backend.hw4.logging;
+import kdu.backend.hw4.Logging;
 
 import java.util.*;
 
 public class SetDemo {
 
-    public static final logging log = new logging();
+    public static final Logging log = new Logging();
 
     /**
      * Return sorted book set according to comparator
@@ -15,7 +15,7 @@ public class SetDemo {
      *
      * @return sorted set of books
      * */
-    public static Set<Book> treeSetDemo(Comparator comparator) {
+    public static Set<Book> treeSetDemo(Comparator<Book> comparator) {
         Book book1 = new Book("Harry Potter", "J.K.Rowling", 1997);
         Book book2 = new Book("Harry Potter", "J.K.Rowling", 1997);
         Book book3 = new Book("Walden", "Henry David Thoreau", 1854);
@@ -36,7 +36,7 @@ public class SetDemo {
 
         log.logInfo("Books sorted with comparator as "+comparator.getClass());
 
-        Set<Book> sortedBooks = new TreeSet<Book>(comparator);
+        Set<Book> sortedBooks = new TreeSet<>(comparator);
         sortedBooks.addAll(books);
         return sortedBooks;
     }
