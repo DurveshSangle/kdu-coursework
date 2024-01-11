@@ -92,29 +92,15 @@ public class TicketReservation {
 
     public static void main(String[] args) {
         TicketReservation ticketReservation = new TicketReservation();
-        
-        String firstName = "Durvesh";
-        String lastName = "Sangle";
-        int age = 21;
-        String gender = "male";
-        String travelClass = "business";
         /**
          * book 10 flights at first then 11th would be waiting ticket
          * */
-        ticketReservation.bookFlight(firstName,"lastName",age,"gender","travelClass","B4");
-        ticketReservation.bookFlight("firstName","lastName",age,"gender","travelClass","Z4");
-        ticketReservation.bookFlight("firstName","lastName",age,"gender","travelClass","E4");
-        ticketReservation.bookFlight("firstName","lastName",age,"gender","travelClass","T4");
-        ticketReservation.bookFlight("firstName","lastName",age,"gender","travelClass","K4");
-        ticketReservation.bookFlight("firstName","lastName",age,"gender","travelClass","I4");
-        ticketReservation.bookFlight("firstName","lastName",age,"gender","travelClass","P4");
-        ticketReservation.bookFlight("firstName","lastName",age,"gender","travelClass","C4");
-        ticketReservation.bookFlight("firstName","lastName",age,"gender","travelClass","N4");
-        ticketReservation.bookFlight("firstName","lastName",age,"gender","travelClass","M4");
+        ticketReservation.bookFlight("Durvesh","Sangle",21,"male","business","B4");
+        ticketReservation.bookFlight("Durvesh","Sangle",21,"male","business","M4");
         /**
          * 11th booking
          * */
-        ticketReservation.bookFlight("firstName","lastName",age,"gender","travelClass","L4");
+        ticketReservation.bookFlight("Durvesh","Sangle",21,"male","business","L4");
         /**
          * cancelling ticket with wrong confirmation number
          */
