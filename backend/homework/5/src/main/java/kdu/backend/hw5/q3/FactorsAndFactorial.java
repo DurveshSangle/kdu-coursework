@@ -26,13 +26,11 @@ public class FactorsAndFactorial {
     }
 
     public static void main(String[] args) {
-        // Choose a number for which you want to calculate factorial and factors
         Scanner sc = new Scanner(System.in);
         log.logInfo("Please enter a number: ");
         int number = sc.nextInt();
         sc.close();
 
-        // Create threads for factorial and factors calculations
         Thread factorialThread = new Thread(() -> {
             long factorialResult = factorialOfNumber(number);
             String msg = "Factorial of " + number + " is: " + factorialResult;
@@ -44,12 +42,10 @@ public class FactorsAndFactorial {
             log.logInfo(msg);
         });
 
-        // Start both threads
         factorialThread.start();
         factorsThread.start();
 
         try {
-            // Wait for both threads to finish before main thread continues
             factorialThread.join();
             factorsThread.join();
         } catch (InterruptedException e) {
