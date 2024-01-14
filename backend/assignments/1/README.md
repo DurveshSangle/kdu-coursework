@@ -10,7 +10,7 @@ The following test cases are included:
 - testConcurrentTransactions1: Tests concurrent execution with different input
 - testConcurrentTransactionsMediumFile: Tests concurrent execution with medium file
 - testConcurrentTransactionsLargeFile: Tests concurrent execution with large file
-- testExecuteTransactionImplementsRunnable: Confirms ExecuteTransaction implements Runnable
+- testExecuteTransactionImplementsRunnable: Confirms org.example.ExecuteTransaction implements Runnable
 
 Detailed JavaDoc comments are included with each test case.
 
@@ -19,14 +19,14 @@ Different input data sets are used to ensure robust testing.
 
 ## Necessary files and functions
 Your src/main/java should have the following files:
-- `Main.java` - which is the starting point of the program
-- `ExecuteTransaction.java` - which is the main class which executes each type of crypto transaction and implements the Runnable interface
+- `org.example.Main.java` - which is the starting point of the program
+- `org.example.ExecuteTransaction.java` - which is the main class which executes each type of crypto transaction and implements the Runnable interface
 
-## executeTransactions function in Main.java
+## executeTransactions function in org.example.Main.java
 
-Main class should have a function named `executeTransactions` which takes below input and executes the transactions
+org.example.Main class should have a function named `executeTransactions` which takes below input and executes the transactions
 from the incoming transaction data JSON files. This function needs to be called in the `main` function to execute the
-incoming transactions and should use ExecuteTransaction class for processing each transaction.
+incoming transactions and should use org.example.ExecuteTransaction class for processing each transaction.
 - Definition - `public static void executeTransactions(JsonNode jsonTransactions, CountDownLatch latch) {}`
 
 ### Input Format
