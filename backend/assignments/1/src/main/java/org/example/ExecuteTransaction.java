@@ -136,17 +136,20 @@ public class ExecuteTransaction implements Runnable{
      * Method generates the unique block hash required * for transactions made using
      the cryptocurrencies * @return - string representing the transaction hashcode */
     private String getBlockHash() {
-        String saltChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         StringBuilder transactionHash = new StringBuilder();
-        int j = 0;
+        Random rnd = new Random();
+        /**
+         * Introducing delay mimicking complex
+         * calculation being performed.
+         */
         for (double i = 0; i < 199999999; i++) {
-            j++;
+            i = i;
         }
         while (transactionHash.length() < 128) {
-            int index = (rnd.nextInt() * saltChars.length());
-            transactionHash.append(saltChars.charAt(index));
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            transactionHash.append(SALTCHARS.charAt(index));
         }
-        saltChars+=j;
         String hashCode = transactionHash.toString();
         return "0x" + hashCode.toLowerCase();
     }
