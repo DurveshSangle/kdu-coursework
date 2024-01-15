@@ -47,11 +47,11 @@ public class Coin {
         this.symbol = symbol;
     }
 
-    public double getPrice() {
+    public synchronized double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public synchronized void setPrice(double price) {
         this.price = price;
     }
 
@@ -63,11 +63,11 @@ public class Coin {
         this.circulatingSupply = circulatingSupply;
     }
 
-    public long getQuantity() {
+    public synchronized long getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(long quantity) {
+    public synchronized void setQuantity(long quantity) {
         this.quantity = quantity;
     }
 

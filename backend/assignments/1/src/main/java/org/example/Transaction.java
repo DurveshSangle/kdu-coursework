@@ -58,7 +58,7 @@ public class Transaction {
         }
 
         private int volume;
-        private int quantity;
+        private long quantity;
         private String wallet_address;
         private double price; // This field is used for "UPDATE_PRICE" type
 
@@ -66,7 +66,7 @@ public class Transaction {
         public CoinData() {
         }
 
-        public CoinData(String coin, int quantity, String wallet_address) {
+        public CoinData(String coin, long quantity, String wallet_address) {
             this.coin = coin;
             this.quantity = quantity;
             this.wallet_address = wallet_address;
@@ -92,11 +92,11 @@ public class Transaction {
             this.coin = coin;
         }
 
-        public int getQuantity() {
+        public long getQuantity() {
             return quantity;
         }
 
-        public void setQuantity(int quantity) {
+        public void setQuantity(long quantity) {
             this.quantity = quantity;
         }
 

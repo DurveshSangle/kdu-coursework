@@ -22,19 +22,20 @@ public class Main {
     private static Logging log = new Logging();
 
     public static void main(String[] args) {
-        String filePath = "src/main/resources/small_transaction.json";
+        String filePath = "src/main/resources/test_transaction_1.json";
         try{
-            JsonNode jsonNode = objectMapper.readTree(new File(filePath));
+            JsonNode jsonNode = parseJsonFile(filePath);
             CountDownLatch latch = new CountDownLatch(jsonNode.size());
             executeTransactions(jsonNode, latch);
+            latch.await();
         }
-        catch (IOException e) {
+        catch (Exception e) {
             // Handle IOException (e.g., file not found, read error)
-            e.printStackTrace();
+            log.logInfo(e.toString());
         }
     }
 
-    public static void executeTransactions(JsonNode jsonTransactions, CountDownLatch latch) {
+    public static void executeTransactions(JsonNode jsonTransactions, CountDownLatch latch){
         try{
             Path coinsFilePath = Path.of("src/main/resources/coins.csv");
             Path tradersFilePath = Path.of("src/main/resources/traders.csv");
@@ -42,11 +43,13 @@ public class Main {
             List<String[]> tradersData = parseCSV(tradersFilePath);
             Market market = new Market(coinsData,tradersData);
             Transaction[] transactionList = objectMapper.treeToValue(jsonTransactions, Transaction[].class);
-            ExecutorService executorService = Executors.newFixedThreadPool(10);
+            log.logInfo(""+transactionList.length);
+            log.logInfo(jsonTransactions.toString());
+            ExecutorService executorService = Executors.newFixedThreadPool((int)latch.getCount());
             for(Transaction transaction:transactionList){
                 executorService.execute(new ExecuteTransaction(transaction,latch,market));
             }
-            shutDownExecutor(executorService,latch);
+            executorService.shutdown();
         }
         catch(JsonProcessingException e){
             e.printStackTrace();
@@ -77,19 +80,6 @@ public class Main {
     }
     public static JsonNode parseJsonFile(String filePath) throws IOException{
         return objectMapper.readTree(new File(filePath));
-    }
-    public static void shutDownExecutor(ExecutorService executorService, CountDownLatch latch){
-        try {
-            // org.example.Main thread waits until the count reaches zero
-            latch.await();
-            log.logInfo("All tasks have completed.");
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            e.printStackTrace();
-        } finally {
-            // Shutdown the ExecutorService
-            executorService.shutdown();
-        }
     }
 
 }

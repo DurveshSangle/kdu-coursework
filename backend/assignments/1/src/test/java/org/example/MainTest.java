@@ -4,10 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import org.example.Coin;
-import org.example.Main;
-import org.example.ExecuteTransaction;
-
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;

@@ -19,7 +19,7 @@ public class Market {
             String symbol = tuple[3];
             double price = Double.parseDouble(tuple[4]);
             long circulatingSupply = Long.parseLong(tuple[5]);
-            coinsList.add(new Coin(rank,name,symbol,price,circulatingSupply,0));
+            coinsList.add(new Coin(rank,name,symbol,price,circulatingSupply,circulatingSupply));
         }
         for(String[] tuple:tradersData){
             String firstName = tuple[1];

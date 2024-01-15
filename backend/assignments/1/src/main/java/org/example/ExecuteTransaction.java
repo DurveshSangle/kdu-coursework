@@ -1,5 +1,8 @@
 package org.example;
 
+import ch.qos.logback.core.helpers.ThrowableToStringArray;
+
+import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 
@@ -49,88 +52,85 @@ public class ExecuteTransaction implements Runnable{
     @Override
     public void run() {
         initiateTransaction();
+        getBlockHash();
         latch.countDown();
     }
+
     public void initiateTransaction(){
         String type = transaction.getType();
-        String coinName = transaction.getCoinData().getCoin();
-        Coin coin = market.getCoinByName(coinName);
-        synchronized(coin){
-            getBlockHash();
-            if(type.equals("BUY") || type.equals("SELL")) buyOrSellCoin(coin);
-            else if(type.equals("UPDATE_PRICE")) updatePrice(coin);
-            else if(type.equals("ADD_VOLUME")) addVolume(coin);
+        Transaction.CoinData coinData = transaction.getCoinData();
+        if(type.equalsIgnoreCase("BUY")) buy(coinData);
+        else if(type.equalsIgnoreCase("SELL")) sell(coinData);
+        else if(type.equalsIgnoreCase("UPDATE_PRICE")){
+            String coinSymbol = coinData.getCoin();
+            Coin coin = market.getCoinByName(coinSymbol);
+            coin.setPrice(coinData.getPrice());
+            log.logInfo("Price updated of "+coinSymbol+" to "+coinData.getPrice());
+        }
+        else{
+            String coinSymbol = coinData.getCoin();
+            Coin coin = market.getCoinByName(coinSymbol);
+            coin.setQuantity(coinData.getVolume());
+            if(coin.getQuantity()+coinData.getVolume()>coin.getCirculatingSupply()) {
+                log.logInfo("Volume cannot be added. Max limit reached !!!");
+            }
+            else{
+                coin.setQuantity(coin.getQuantity()+coinData.getVolume());
+            }
         }
     }
 
-    public void buyOrSellCoin(Coin coin){
-        long quantity = transaction.getCoinData().getQuantity();
-        String walletAddress = transaction.getCoinData().getWallet_address();
-        Trader trader =  market.getTraderByWalletAddress(walletAddress);
-        try{
-            String type = transaction.getType();
-            if(type.equals("SELL")){
-                while(!isSellPossible(coin,quantity,trader)){
-                    log.logInfo("SELL "+transaction.toString()+" is waiting");
+    public void buy(Transaction.CoinData coinData){
+        String coinSymbol = coinData.getCoin();
+        Coin coin = market.getCoinByName(coinSymbol);
+        if(coin==null) {
+            log.logInfo("No such coin found !!!");
+            return;
+        }
+        synchronized (coin){
+            try{
+                while(coin.getQuantity()<coinData.getQuantity()){
+                    log.logInfo(transaction.toString()+" is waiting to buy");
                     coin.wait();
                 }
+                String walletAddress = coinData.getWallet_address();
+                Trader trader = market.getTraderByWalletAddress(walletAddress);
+                Wallet traderWallet = trader.getWallet();
+                log.logInfo("Buy Complete :- "+transaction.toString());
+                completeBuySell(coin,traderWallet, coinData.getQuantity());
+                coin.notifyAll();
             }
-            else if(type.equals("BUY")){
-                while(!isBuyPossible(coin,quantity)){
-                    log.logInfo("BUY "+transaction.toString()+" is waiting");
-                    coin.wait();
-                }
+            catch(InterruptedException e){
+                Thread.currentThread().interrupt();
             }
-            if(type.equals("BUY")) updateWalletAndMarket(coin,trader,quantity);
-            else if(type.equals("SELL")) updateWalletAndMarket(coin,trader,-quantity);
-
-            log.logInfo("Buy or Sell "+transaction.toString()+" is completed");
-            coin.notifyAll();
-        }catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            e.printStackTrace();
         }
     }
-
-    public boolean isBuyPossible(Coin coin,long quantityToBuy){
-        return coin.getQuantity() >= quantityToBuy;
-    }
-
-    public boolean isSellPossible(Coin coin,long quantityToSell,Trader trader){
-        long prevQuantity = trader.getWallet().getCoinsPortfolio().getOrDefault(coin.getSymbol(),(long)0);
-        return prevQuantity >= quantityToSell && coin.getCirculatingSupply() >= coin.getQuantity() + quantityToSell;
-    }
-
-    public void updateWalletAndMarket(Coin coin,Trader trader,long quantity){
+    public void completeBuySell(Coin coin, Wallet wallet, long quantity){
         coin.setQuantity(coin.getQuantity()-quantity);
-        trader.getWallet().addCoinToPortfolio(coin.getSymbol(),quantity,coin.getPrice());
-        trader.setProfit(trader.getProfit()-(coin.getPrice()*quantity));
+        Map<String,Long> coinsOfTrader = wallet.getCoinsPortfolio();
+        long currQuantity = coinsOfTrader.getOrDefault(coin.getSymbol(),(long)0);
+        long updatedQuantity = currQuantity - quantity;
+        coinsOfTrader.put(coin.getSymbol(),updatedQuantity);
     }
 
-    public void updatePrice(Coin coin){
-        double updatedPrice = transaction.getCoinData().getPrice();
-        coin.setPrice(updatedPrice);
-        log.logInfo("Price of "+coin.getSymbol()+" updated to "+updatedPrice);
-    }
-
-    public void addVolume(Coin coin){
-        long volumeToAdded = transaction.getCoinData().getVolume();
-        try{
-            while(!canVolumeIncreased(coin,volumeToAdded)){
-                log.logInfo(coin.getSymbol()+" "+volumeToAdded+" thread is on wait !!!!");
-                coin.wait();
-            }
-            coin.setQuantity(coin.getQuantity()+volumeToAdded);
-            log.logInfo("Volume Add of "+coin.getSymbol()+" "+volumeToAdded+" thread is completed!!!!");
-            coin.notifyAll();
-        } catch(InterruptedException e){
-            Thread.currentThread().interrupt();
-            e.printStackTrace();
+    public void sell(Transaction.CoinData coinData){
+        String coinSymbol = coinData.getCoin();
+        Coin coin = market.getCoinByName(coinSymbol);
+        if(coin==null) {
+            log.logInfo("No such coin found !!!");
+            return;
         }
-    }
-
-    public boolean canVolumeIncreased(Coin coin,long volumeToAdded){
-        return coin.getQuantity()+volumeToAdded<=coin.getCirculatingSupply();
+        String walletAddress = coinData.getWallet_address();
+        Trader trader = market.getTraderByWalletAddress(walletAddress);
+        Wallet traderWallet = trader.getWallet();
+        long currentQuantity = traderWallet.getCoinsPortfolio().getOrDefault(coinData.getCoin(),(long)0);
+        long sellingQuantity = transaction.getCoinData().getQuantity();
+        if(currentQuantity<sellingQuantity) log.logInfo("Trader trying to sell more coins than he have !!! Transaction Declined !!!!");
+        else if(sellingQuantity+coin.getQuantity()>coin.getCirculatingSupply()) log.logInfo("Maximum quantity of coins reached. Cannot sell !!! Transaction Declined");
+        else {
+            log.logInfo("Sell Complete :- "+transaction.toString());
+            completeBuySell(coin,traderWallet, -coinData.getQuantity());
+        }
     }
     /**
      * Method generates the unique block hash required * for transactions made using
