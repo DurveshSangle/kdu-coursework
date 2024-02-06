@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML Exercise 1</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Header of the html file -->
     <header>
-        <h1>Kickdrum</h1>
+        <h1 id="mainHeading">Kickdrum</h1>
         <!-- Main Navbar -->
         <nav>
             <a href="">Services</a>
@@ -21,26 +22,26 @@
         </nav>
     </header>
     <!-- Sidebar -->
-    <aside>
+    <aside id="sidebar">
         <ul>
             <li><a href="google.com" target="_blank">Private Equity</a></li>
             <li><a href="google.com" target="_parent">Development</a></li>
             <li><a href="google.com" target="_self">AWS</a></li>
             <li><a href="google.com" target="_top">AWS Reseller</a></li>
-            <li><a href="#Atlassian">Atlassian</a></li>
+            <li><a href="google.com">Atlassian</a></li>
         </ul>
     </aside>
     <!-- Main content of the webpage -->
-    <main>
-        <section>
-            <h2> <s> Migitate technical risks. </s></h2>
-            <h2> <u>Maximum business impact.</u></h2>
+    <main id="mainContent">
+        <section class="section-one">
+            <h2> <s> We are better</s></h2>
+            <h2> <u>We are best</u></h2>
             <p>We partner with technology investors and executives to accelerate enterprise value.</p>
             <p>The square of two is writen as 2 <sup>2</sup></p>
             <p>We can have definations of any words writeen using subscript, eg. deillema <sub>1</sub></p>
             <p> The method <code>.add()</code>, add object to the list</p>
         </section>
-        <section>
+        <section class="section-two">
             <div>
                 <h2>Builder. Not box checker</h2>
                 <article><p>
@@ -53,77 +54,60 @@
                     <p><i>Our work pre- and post-transaction is investment-driven -</i> from our proven maturity assessment model to our value creation solutions, we bring real-world operating wisdom to your process.</p>
                 </article>
             </div>
-            <div>
-                <div>
-                    <h2>$20B</h2>
-                    <p>Total Transaction Value</p>
-                </div>
-                <div>
-                    <h2>150+</h2>
-                    <p>Transaction Advised</p>
-                </div>
-                <div>
-                    <h2>22+</h2>
-                    <p>Former CXOs on our US-based team</p>
-                </div>
-                <div>
-                    <h2>$150M</h2>
-                    <p>AWS Cloud Contracts</p>
-                </div>
-            </div>
         </section>
-        <section>
+        <section class="section-one">
             <div>
+                <h2>Testimony</h2>
                 <img src="mike-biwer.jpeg" alt="Photo of Mike Biwer">
                 <h4>Mike Biwer</h4>
                 <h4>CEO at Cavello</h4>
             </div>
             <div>
                 <pre>
-                    <blockquote cite="#abcNews"> "Kickdrum's team is world class. They delivered on several large and complex challenges that helped transform the value of our business and the excitement of our customers." </blockquote>
+                    <blockquote cite="#abcNews"> "Kickdrum's team is world class. They delivered on several large and complex challenges that <br>helped transform the value of our business and the excitement of our customers." </blockquote>
                 </pre>
             </div>
         </section>
         <!-- Form Example -->
-        <section>
-            <h1>Register To Kickdrum</h1>
+        <section class="section-two">
+            <h2>Register To Kickdrum</h2>
             <form action="#">
                 <label for="nameinput">Name</label>
-                <input type="text" name="nameinput" required>
+                <input type="text" name="nameinput" tabindex="1" required>
                 <label for="username">Username</label>
-                <input type="text" name="username" required>
+                <input type="text" name="username" tabindex="3" required>
                 <label for="password">Password</label>
-                <input type="password" name="password" required>
+                <input type="password" name="password" tabindex="2" required> <br>
                 <label for="experience">Years of Experience</label>
                 <input type="number" name="experience">
                 <label for="mobile">Mobile Number</label>
-                <input type="tel" name="mobile">
+                <input type="tel" name="mobile"><br>
                 <label >Gender</label>
                 <label for="male">Male</label>
                 <input type="radio" name="male">
                 <label for="female">Female</label>
-                <input type="radio" name="female">
+                <input type="radio" name="female"> <br>
                 <label >Arbitrary</label>
                 <label for="A">A</label>
                 <input type="checkbox" name="A">
                 <label for="B">B</label>
                 <input type="checkbox" name="B">
                 <label for="C">C</label>
-                <input type="checkbox" name="C">
+                <input type="checkbox" name="C"> <br>
                 <label for="level">Level</label>
                 <select name="level">
                     <option value="Beginer">Beginer</option>
                     <option value="Intermediate">Intermediate</option>
                     <option value="Expert">Expert</option>
-                </select>
+                </select> <br>
                 <label for="query">Query</label>
-                <textarea name="query" cols="30" rows="10"></textarea>
+                <textarea name="query" cols="30" rows="10"></textarea> <br>
 
                 <label for="gsearch">Search Google:</label>
-                <input type="search" id="gsearch" name="gsearch">
+                <input type="search" id="gsearch" name="gsearch"> <br>
 
-                <input type="submit">
-                <input type="reset">
+                <input type="submit"> <br>
+                <input type="reset"> <br>
             </form>
         </section>
     </main>
