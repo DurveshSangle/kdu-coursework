@@ -35,7 +35,7 @@ function addEditBtn(listItem,textSpan){
     editBtn.textContent = "EDIT";
 
     editBtn.addEventListener("click", ()=>{
-        listItem.removeChild(editBtn,textSpan);
+        listItem.removeChild(editBtn);
         const itemInput = document.createElement("input");
         const saveBtn = document.createElement("button");
         saveBtn.textContent = "SAVE";
@@ -55,5 +55,3 @@ function addEditBtn(listItem,textSpan){
 
     listItem.appendChild(editBtn);
 }
-
-const delBtn = document.getElementById("")
