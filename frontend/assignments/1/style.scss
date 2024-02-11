@@ -262,7 +262,7 @@ body {
             }
         }
 
-        .foating-tweet-box-icon {
+        .floating-tweet-box-icon {
             position: absolute;
             background-color: #1d9bf0;
             right: 40px;
@@ -282,8 +282,8 @@ body {
         width: 300px;
     }
 
-    @media screen and (min-width:601px){
-        .mobileNavItems,.super-upper-part, .middle-part, .mobile-profile-handle{
+    @media screen and (min-width:415px){
+        .mobileNavItems,.super-upper-part, .middle-part, .mobile-profile-handle, .floating-tweet-box-icon{
             display: none;
         }
         .top-bar{
@@ -347,7 +347,7 @@ body {
         }
     }
 
-    @media screen and (max-width:600px){
+    @media screen and (max-width:414px){
         .container{
             width: 388px;
         }

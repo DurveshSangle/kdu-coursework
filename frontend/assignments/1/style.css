@@ -229,7 +229,7 @@ body {
 .container .rightPanel .posts .post-actions-links button span {
   color: white;
 }
-.container .rightPanel .foating-tweet-box-icon {
+.container .rightPanel .floating-tweet-box-icon {
   position: absolute;
   background-color: #1d9bf0;
   right: 40px;
@@ -239,15 +239,15 @@ body {
   padding: 8px 15px;
   padding-top: 15px;
 }
-.container .rightPanel .foating-tweet-box-icon img {
+.container .rightPanel .floating-tweet-box-icon img {
   width: 30px;
   height: 30px;
 }
 .container .open-nav {
   width: 300px;
 }
-@media screen and (min-width: 601px) {
-  .container .mobileNavItems, .container .super-upper-part, .container .middle-part, .container .mobile-profile-handle {
+@media screen and (min-width: 415px) {
+  .container .mobileNavItems, .container .super-upper-part, .container .middle-part, .container .mobile-profile-handle, .container .floating-tweet-box-icon {
     display: none;
   }
   .container .top-bar {
@@ -305,7 +305,7 @@ body {
     width: 85%;
   }
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 414px) {
   .container .container {
     width: 388px;
   }
