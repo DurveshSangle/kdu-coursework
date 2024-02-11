@@ -1,0 +1,483 @@
+@font-face {
+    font-family: Chirp;
+    src: url(fonts/Chirp-Regular.woff2);
+}
+@font-face {
+    font-family: ChirpBold;
+    src: url(fonts/Chirp-Bold.woff2);
+}
+
+body {
+    background-color: black;
+    font-family: Chirp;
+}
+
+.active-button {
+    background-color: #1d9bf0;
+    color: white;
+}
+
+.inactive-button {
+    background-color: #0f4e78;
+    color: #808080;
+}
+
+.liked img{
+    fill: red;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+
+    #profile-image {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+
+    #three-dots {
+        width: 18px;
+    }
+
+    .leftPanel {
+        width: 30%;
+        height: 100%;
+
+        .xLogo {
+            padding-left: 8px;
+        }
+
+        .xLogo img{
+            width: 30px;
+            // height: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .navigation-section {
+            position: static;
+            float: right;
+            width: 260px;
+            background-color: black;
+            padding-left: 20px;
+        }
+
+        .navItems{
+            padding-left: 10px;
+        }
+
+        .navItems nav {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navLinks {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            align-items: center;
+            margin: 8px 2px;
+        }
+
+        a{
+            text-decoration: none;
+            color: #cbcdce;
+            font-size: 21px;
+
+            img {
+                width: 25px;
+            }
+        }
+
+        #post-button {
+            background-color: #1d9bf0;
+            font-size: 18px;
+            font-family: ChirpBold;
+            color: white;
+            width: 85%;
+            padding: 12px 0;
+            border-radius: 30px;
+            border: 0;
+            margin: 0 5px;
+            margin-top: 15px;
+            margin-bottom: 65px;
+        }
+
+        .profile button{
+            background-color: black;
+            border: 0px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 95%;
+        }
+
+        .profile p{
+            font-family: ChirpBold;
+            font-size: 15px;
+            color: white;
+        }
+
+        .profile p:last-of-type{
+            color: #71767b;
+        }
+
+        .icon-plus-username {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+
+        .user-name {
+            text-align: left;
+        }
+
+        .mobile-profile-handle{
+            padding: 10px;
+            p{
+                font-family: ChirpBold;
+                font-size: 15px;
+                color: white;
+            }
+            
+        }
+
+        #plus-icon {
+            width: 20px;
+            height: 20px;
+            border: 1px white solid;
+            border-radius: 50%;
+            padding: 5px;
+        }
+
+        .profile-plus {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin: 10px;
+        }
+        .name-handle {
+            p{
+                line-height: 20px;   
+            }
+            :last-child{
+                color: #71767b;
+            }
+            margin: 5px;
+        }
+        .followers {
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+            margin: 5px;
+            margin-top: 10px;
+
+            p {
+                color: #71767b;
+            }
+            span {
+                color: white;
+            }
+        }
+        .line{
+            margin-top: 15px;
+            hr {
+                border-top: 1px solid #292e2e;
+            }
+        }
+    }
+    .rightPanel {
+        // For top Bar
+        .top-bar {
+            justify-content: space-between;
+            padding: 10px;
+
+            img {
+                width: 35px;
+            }
+        }
+
+        .posts {
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            padding-bottom: 5px;
+            border: 1px #2f3336 solid;
+
+            .each-post{
+                display: flex;
+                flex-direction: row;
+                padding-bottom: 20px;
+            }
+
+            img {
+                width: 20px;
+            }
+            p{
+                color: white;
+            }
+
+            .post-content-right {
+                padding-left: 10px;
+                width: 100%;
+            }
+            .post-upper {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                span{
+                    color: #71767b;
+                }
+            }
+
+            .post-middle {
+                line-height: 20px;
+                span{
+                    color: #1d9bf0;
+                }
+            }
+
+            .post-lower {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                padding-top: 10px;
+            }
+
+            .post-actions-links{
+                display: flex;
+                justify-content: space-between;
+                width: 90%;
+                button {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    background-color: black;
+                    border: 0;
+                    span{
+                        color: white;
+                    }
+                }
+            }
+        }
+
+        .foating-tweet-box-icon {
+            position: absolute;
+            background-color: #1d9bf0;
+            right: 40px;
+            bottom: 30px;
+            border: 0;
+            border-radius: 50%;
+            padding: 8px 15px;
+            padding-top: 15px;
+            img{
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+
+    .open-nav {
+        width: 300px;
+    }
+
+    @media screen and (min-width:601px){
+        .mobileNavItems,.super-upper-part, .middle-part, .mobile-profile-handle{
+            display: none;
+        }
+        .top-bar{
+            display: none;
+        }
+        .rightPanel{
+            width: 70%;
+        }
+        .tweet-box {
+            display: flex;
+            flex-direction: column;
+            width: 85%;
+            padding: 15px;
+            padding-bottom: 10px;
+            border: 1px #2f3336 solid;
+        }
+
+        .upper-part {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            input {
+                background-color: black;
+                border: 0;
+                font-size: 21px;
+                margin-left: 10px;
+                color: white;
+            }
+        }
+
+        .lower-part {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            padding-top: 10px;
+            padding-bottom: 0;
+            padding-right: 0;
+            padding-left: 46px;
+        }
+
+        .attach-icons img {
+            width: 20px;
+            margin: 7px;
+        }
+
+        .attach-icons a {
+            text-decoration: none;
+        }
+        .tweet-btns {
+            padding: 8px 18px;
+            border-radius: 20px;
+            border: 0;
+            font-size: 15px;
+            font-family: ChirpBold;
+        }
+        .posts {
+            width: 85%;
+        }
+    }
+
+    @media screen and (max-width:600px){
+        .container{
+            width: 388px;
+        }
+        .leftPanel {
+            width: 0;
+        }
+        .mobileNavItems {
+            display: block;
+        }
+        .desktopNavItems,.xLogo,.postBtn,.profile{
+            display: none;
+        }
+        .mobile-profile-handle {
+            display: block;
+        }
+        .top-bar {
+            display: flex;
+            width: 414px;
+            box-sizing: border-box;
+        }
+        #one {
+            order: -1;
+        }
+        #two {
+            order: -2;
+        }
+        .navItems{
+            img {
+                width: 10px;
+            }
+            font-size: 4px;
+            font-family: ChirpBold;
+            a {
+                margin: 10px 0;
+            }
+        }
+        .tweet-box {
+            display: flex;
+            flex-direction: column;
+            width: 414px;
+            box-sizing: border-box;
+            padding: 15px;  
+            padding-bottom: 10px;
+            border: 1px #2f3336 solid;
+        }
+
+        .super-upper-part {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            img{
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        .upper-part {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-top: 20px;
+
+            input {
+                background-color: black;
+                border: 0;
+                font-size: 21px;
+                margin-left: 10px;
+                color: white;
+            }
+        }
+
+        .middle-part {
+            img{
+                width: 20px;
+                height: 20px;
+            }
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-top: 80px;
+            margin-left: 10px;
+            gap: 10px;
+            color: #1d9bf0;
+        }
+
+        .lower-part {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+            padding-left: 5px;
+            margin-top: 20px;
+        }
+
+        .attach-icons img {
+            width: 20px;
+            margin: 7px;
+        }
+
+        .attach-icons a {
+            text-decoration: none;
+        }
+
+    
+
+        .tweet-btns, .draft-btn{
+            padding: 8px 18px;
+            border-radius: 20px;
+            border: 0;
+            font-size: 15px;
+            font-family: ChirpBold;
+        }
+
+        .draft-btn {
+            background-color: black;
+            margin-right: 10px;
+            color: #1d9bf0;
+        }
+
+        #desktop-view-btn {
+            display: none;
+        }
+        
+        .posts {
+            width: 414px;
+            box-sizing: border-box;
+        }
+    }
+
+}
