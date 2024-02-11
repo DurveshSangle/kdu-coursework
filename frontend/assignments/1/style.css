@@ -8,7 +8,7 @@
 }
 body {
   background-color: black;
-  font-family: Chirp;
+  font-family: Chirp, sans-serif;
 }
 
 .active-button {
@@ -81,7 +81,7 @@ body {
 .container .leftPanel #post-button {
   background-color: #1d9bf0;
   font-size: 18px;
-  font-family: ChirpBold;
+  font-family: ChirpBold, sans-serif;
   color: white;
   width: 85%;
   padding: 12px 0;
@@ -101,7 +101,7 @@ body {
   width: 95%;
 }
 .container .leftPanel .profile p {
-  font-family: ChirpBold;
+  font-family: ChirpBold, sans-serif;
   font-size: 15px;
   color: white;
 }
@@ -120,7 +120,7 @@ body {
   padding: 10px;
 }
 .container .leftPanel .mobile-profile-handle p {
-  font-family: ChirpBold;
+  font-family: ChirpBold, sans-serif;
   font-size: 15px;
   color: white;
 }
@@ -299,7 +299,7 @@ body {
     border-radius: 20px;
     border: 0;
     font-size: 15px;
-    font-family: ChirpBold;
+    font-family: ChirpBold, sans-serif;
   }
   .container .posts {
     width: 85%;
@@ -334,7 +334,7 @@ body {
   }
   .container .navItems {
     font-size: 4px;
-    font-family: ChirpBold;
+    font-family: ChirpBold, sans-serif;
   }
   .container .navItems img {
     width: 10px;
@@ -407,7 +407,7 @@ body {
     border-radius: 20px;
     border: 0;
     font-size: 15px;
-    font-family: ChirpBold;
+    font-family: ChirpBold, sans-serif;
   }
   .container .draft-btn {
     background-color: black;
