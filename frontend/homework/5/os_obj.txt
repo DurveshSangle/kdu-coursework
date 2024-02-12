@@ -1,0 +1,1 @@
+{"HostName":"hp-HP-EliteBook-840-G7-Notebook-PC","Operating System":"Linux","Architecture":"x64","OS Release":"6.5.0-15-generic","Uptime":45408.2,"Number of CPU Cores":8,"Total Memory":16524693504,"Free Memory":10260312064,"Current Working Directory":"/tmp"}
