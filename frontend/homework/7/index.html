@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Socket Implementation</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>KDU CHAT APP</h1>
+    </header>
+
+    <main>
+      <div id="all-messages-section"></div>
+    </main>
+
+    <footer>
+      <div id="messageInput">
+        <input type="text" id="message" placeholder="Write a message here..." />
+        <button type="submit" id="sendMsg">
+          <img src="images/send.png" alt="" />
+        </button>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.socket.io/4.7.4/socket.io.min.js"
+      integrity="sha384-Gr6Lu2Ajx28mzwyVR8CFkULdCU7kMlZ9UthllibdOSo6qAiN+yXNHqtgdTvFXMT4"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const socket = io("http://localhost:5000");
+
+      const outputDiv = document.getElementById("all-messages-section");
+
+      function addMessage(message, sender, flag) {
+        let eachMsg = document.createElement("div");
+        eachMsg.classList.add("each-message");
+
+        let span = document.createElement("span");
+        span.classList.add("profile-icon");
+        span.innerText = sender;
+
+        let p = document.createElement("p");
+        p.innerText = message;
+
+        eachMsg.appendChild(span);
+        eachMsg.appendChild(p);
+
+        if (flag == 1) eachMsg.classList.add("sender");
+        else eachMsg.classList.add("receiver");
+
+        outputDiv.appendChild(eachMsg);
+      }
+
+      const sendBtn = document.getElementById("sendMsg");
+      const input = document.getElementById("message");
+
+      socket.on("createMessage", (newMessage) => {
+        console.log(newMessage);
+        addMessage(newMessage, "S", 0);
+      });
+
+      sendBtn.addEventListener("click", () => {
+        const msg = input.value;
+        socket.emit("createMessage", msg);
+        addMessage(msg, "D", 1);
+      });
+    </script>
+  </body>
+</html>

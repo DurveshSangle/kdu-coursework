@@ -1,0 +1,74 @@
+body {
+    background-color: #8CB9BD;
+}
+header {
+    font-size: 3rem;
+    padding: 1rem;
+    margin:0 5%;
+}
+
+main {
+    height: calc(80vh - 5rem);
+    padding: 2rem 5rem;
+
+    #all-messages-section{
+        overflow: scroll;
+        overflow-x: hidden;
+        height: 70vh;
+        padding: 20px;
+    }   
+
+    .each-message {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border: 1px black solid;
+        border-radius: 6px;
+        padding: 10px;
+
+        span {
+            font-size: 1.5rem;
+            padding: 10px;
+            border-radius: 50%;
+            background-color: #accdd0;
+            margin:0 10px;
+        }
+
+        p{
+            font-size: 1.5rem;
+        }
+    }
+
+    .sender {
+        background-color: #b8e2f4;
+        flex-direction: row-reverse;
+    }
+
+    .receiver {
+        background-color: #8dcfec;
+    }
+}
+
+footer {
+    position: sticky;
+    bottom: 0;
+    margin:0 5%;
+    #messageInput {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        #message {
+            width: 80%;    
+            font-size: 2rem;
+            padding: 5px;
+            background-color: #8CB9BD;
+            border: 1px solid #6f9396;
+        }
+        #profile-icon {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
