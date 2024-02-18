@@ -100,7 +100,7 @@ function createPostElement(post) {
 
     // Create elements
     const imgProfile = document.createElement('img');
-    imgProfile.src = user.img;
+    imgProfile.src = post.img;
     imgProfile.alt = '';
     imgProfile.classList.add('profile-image');
 
@@ -276,8 +276,6 @@ async function fetchPosts() {
             console.error('Error fetching posts:', error);
             loading = false; // Reset loading flag
         });
-    
-    // hideLoadingIndicator();
 }
 
 
@@ -289,7 +287,6 @@ function checkScroll() {
     const scrollHeight = document.documentElement.scrollHeight;
 
     if (scrollTop + windowHeight >= scrollHeight - 50) {
-        // showLoadingIndicator();
         fetchPosts(); // Fetch more posts when near the bottom
     }
 }
@@ -305,14 +302,14 @@ fetchPosts();
 
 // Event listener for the add post button
 addPostButtons.forEach(function(button) {
-    button.addEventListener('click', async function() {
+    button.addEventListener('click', function() {
         let tweetText = tweetInput.value.trim();
         if (tweetText === '') {
             alert("Post content is empty !!");
             return;
         }
 
-        await fetch('http://localhost:5000/api/posts', {
+        fetch('http://localhost:5000/api/posts', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -509,7 +506,7 @@ function createChatWindow(data, receiver) {
         toggleButtonState(newMessageInput, sendMessageButton);
     });
 
-    sendMessageButton.addEventListener("click", async () => {
+    sendMessageButton.addEventListener("click", () => {
         const msg = newMessageInput.value;
         socket.emit("sendMsg",{
             content: msg,

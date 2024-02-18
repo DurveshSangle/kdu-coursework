@@ -122,7 +122,6 @@ io.on("connection", (socket) => {
         io.except(socket.id).emit("userLoggedIn", obj1);
         socket.emit("activeUsers", activeUsers);
         activeUsers.push(obj1);
-        // console.log(data);
     })
 
     socket.on("sendMsg", (message) => {
