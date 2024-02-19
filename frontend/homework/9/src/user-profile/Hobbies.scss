@@ -1,0 +1,21 @@
+.hobbies {
+    background-color: #b2f2bb;
+    padding: 10px 20px;
+    width: 45%;
+    height: 60%;
+    border: 1px solid black;
+    
+    .head {
+        text-align: center;
+    }
+
+    h1 {
+        color: #ef8d06;
+    }
+
+    ul > li {
+        color: #2f9e44;
+        list-style: none;
+        font-size: 30px;
+    }
+}

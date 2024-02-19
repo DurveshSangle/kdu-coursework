@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Protest+Revolution&display=swap');
+
+.user-profile {
+    background-color: #ffec99;
+    margin: 10px;
+    border: 1px solid black;
+    padding: 10px 30px;
+    height: 95vh;
+    font-family: Protest Revolution, sans-serif;
+    .main {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        height: 70vh;
+    }
+}
