@@ -5,6 +5,8 @@ import './AddItem.scss';
 export function AddItem({ listProp }: { listProp: ListProp }) {
   const setList = listProp.setList;
   const list = listProp.list;
+  const setSearchInput = listProp.setSearchInput;
+
   const addItemToList = () => {
     const itemAddInput:HTMLInputElement | null = document.querySelector("#item-add-input");
     if (!itemAddInput) return;
@@ -18,6 +20,8 @@ export function AddItem({ listProp }: { listProp: ListProp }) {
     }
     const updatedList = [...list, newItem];
     setList(updatedList);
+    itemAddInput.value = '';
+    setSearchInput('');
   }
 
   return (

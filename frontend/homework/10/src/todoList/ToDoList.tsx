@@ -7,11 +7,14 @@ export function ToDoList() {
   const itemList: Item[] = [];
   const [list, setList] = useState(itemList);
   const [searchList, setSearchList] = useState(itemList);
+  const [searchInput, setSearchInput] = useState('');
   const listProp:ListProp = {
     list: list,
     setList: setList,
     searchList: searchList,
-    setSearchList: setSearchList
+    setSearchList: setSearchList,
+    searchInput: searchInput,
+    setSearchInput: setSearchInput
   };
   return (
     <div className='todo-list'>

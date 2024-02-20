@@ -5,6 +5,7 @@ export function ItemList({ listProp }: { listProp: ListProp }) {
   const setList = listProp.setList;
   const list = listProp.list;
   const searchList = listProp.searchList;
+  const searchInput = listProp.searchInput;
 
   const deleteItem = (id:number) => {
     let updatedList = [...list];
@@ -20,11 +21,16 @@ export function ItemList({ listProp }: { listProp: ListProp }) {
       </div>
     )
   }
-
-  
-
-  let toIterateOverList = list;
-  if (searchList.length !== 0) toIterateOverList = searchList;
+  let toIterateOverList = searchList;
+  if (searchInput === '') toIterateOverList = list;
+  else if (searchList.length === 0) {
+    return (
+      <div className='item-list'>
+        <h2>Items</h2>
+        <p>No items match the search item name</p>
+      </div>
+    )
+  }
 
   return (
     <div className='item-list'>
