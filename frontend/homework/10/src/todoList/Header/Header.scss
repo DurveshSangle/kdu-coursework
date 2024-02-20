@@ -1,0 +1,17 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    background-color: #28a745;
+
+    h1{
+        color: white;
+    }
+
+    input {
+        width: 30%;
+        padding: 5px 10px;
+    }
+}
