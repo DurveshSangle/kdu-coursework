@@ -1,0 +1,38 @@
+.filter {
+    padding: 0 20px;
+    h2 {
+        font-size: 20px;
+        font-weight: 500;
+        margin-top: 0px;
+    }
+
+    .filter-tags {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+
+        .tag {
+            position: relative;
+            margin-bottom: 20px;
+            span {
+                font-size: 15px;
+                padding: 10px;
+                border-radius: 20px;
+                font-weight: 600;
+                background-color: #EE99C2;
+            }
+            button {
+                position: absolute;
+                right: -8px;
+                top: -15px;
+                font-size: 10px;
+                font-weight: 600;
+                padding: 5px;
+                border: 1px solid #e90070;
+                border-radius: 50%;
+                background-color: #f8e1ec;
+                color: black;
+            }
+        }
+    }
+}
