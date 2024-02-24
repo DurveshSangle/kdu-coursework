@@ -31,11 +31,14 @@ export const GlobalProvider = ({ children }:ProviderProps) => {
   }, [])
   
   useEffect(() => {
-    let list = allProductsList;
+    let list = [...allProductsList];
     if (filterInput !== "") list = list.filter((product) => (product.category === filterInput));
-    
-    if (sortInput === "asc") list.sort((a: Product, b: Product) => a.price - b.price);
-    else if (sortInput === "desc") list.sort((a: Product, b: Product) => b.price - a.price);
+    if (sortInput === "asc") {
+      list.sort((a: Product, b: Product) => a.price - b.price);
+    }
+    else if (sortInput === "desc") {
+      list.sort((a: Product, b: Product) => b.price - a.price);
+    } 
     setProductsList(list);
   }, [filterInput, sortInput, allProductsList])
 
