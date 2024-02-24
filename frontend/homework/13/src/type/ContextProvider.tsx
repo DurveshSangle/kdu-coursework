@@ -45,7 +45,7 @@ export const GlobalProvider = ({ children }:ProviderProps) => {
 
 
   useEffect(() => {
-    const list = allProductsList.filter((product) => (product.title.includes(searchInput)));
+    const list = allProductsList.filter((product) => (product.title.toLowerCase().includes(searchInput.toLowerCase())));
     setProductsList(list);
   },[searchInput])
 
