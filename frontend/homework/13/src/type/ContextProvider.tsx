@@ -39,13 +39,15 @@ export const GlobalProvider = ({ children }:ProviderProps) => {
     else if (sortInput === "desc") {
       list.sort((a: Product, b: Product) => b.price - a.price);
     } 
+    console.log(filterInput);
     setProductsList(list);
   }, [filterInput, sortInput, allProductsList])
+
 
   useEffect(() => {
     const list = allProductsList.filter((product) => (product.title.includes(searchInput)));
     setProductsList(list);
-  },[searchInput,allProductsList])
+  },[searchInput])
 
 
   return (

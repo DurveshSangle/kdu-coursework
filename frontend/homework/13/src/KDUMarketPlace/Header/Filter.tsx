@@ -1,4 +1,4 @@
-import { CSSProperties, useContext, useRef} from "react"
+import { CSSProperties, useContext, useEffect, useRef} from "react"
 import { GlobalContext } from "../../type/ContextProvider";
 import { useLocation } from "react-router-dom";
 
@@ -10,11 +10,13 @@ export function Filter() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const filter = searchParams.get('filter');
-  if (filter) {
-    setFilterInput(filter);
-    if(filterRef.current) filterRef.current.value = filter;
-  } 
-
+  
+  useEffect(() => {
+    if (filter) {
+      setFilterInput(filter);
+      if (filterRef.current) filterRef.current.value = filter;
+    }
+  }, [filter, setFilterInput]);
   const handleFilter = () => {
     if (filterRef.current) setFilterInput(filterRef.current.value);
   }
