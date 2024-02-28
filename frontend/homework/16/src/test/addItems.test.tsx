@@ -1,7 +1,7 @@
 
 import {it,expect, describe} from  'vitest'
 import { fireEvent, screen} from '@testing-library/react';
-import { renderWithProviders } from './utils.test'; 
+import { renderWithProviders } from '../utils.'; 
 import '@testing-library/jest-dom';
 import { AddItem } from '../todoList/AddItem';
 

@@ -5,6 +5,9 @@ export default defineConfig({
     devServer: {
       framework: "react",
       bundler: "vite",
-    },
+    }
+  },
+  e2e: {
+    
   }
 });

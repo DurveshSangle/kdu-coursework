@@ -35,7 +35,7 @@ export function Header() {
     const searchResultList = list.filter((item: Item) => {  
       return item.text.toLowerCase().includes(searchText);
     });
-    reduxDispatch(setSearchInput(searchText))
+    reduxDispatch(setSearchInput(event.target.value))
     reduxDispatch(setSearchList(searchResultList));
   };
 

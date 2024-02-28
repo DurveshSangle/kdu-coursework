@@ -2,7 +2,7 @@
 import {it,expect, describe} from  'vitest'
 import { fireEvent ,screen} from '@testing-library/react';
 import { Header } from '../todoList/Header';
-import { renderWithProviders } from './utils.test'; 
+import { renderWithProviders } from '../utils.'; 
 import '@testing-library/jest-dom';
 describe('Header component', () => {
   it('renders the header correctly', () => {
