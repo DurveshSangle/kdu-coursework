@@ -1,0 +1,18 @@
+{
+  "name": "nodejs-1",
+  "version": "1.0.0",
+  "description": "First handsOn of Nodejs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "author": "Durvesh",
+  "license": "ISC",
+  "dependencies": {
+    "os": "^0.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
