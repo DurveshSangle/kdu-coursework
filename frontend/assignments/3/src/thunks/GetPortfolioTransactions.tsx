@@ -5,7 +5,6 @@ export const getPortfolioTransaction = createAsyncThunk("getPortfolioTransaction
   try {
     const response = await fetch(url);
     const data: Transaction[] = await response.json();
-    console.log(data);
     return data;
   }
   catch (e) {

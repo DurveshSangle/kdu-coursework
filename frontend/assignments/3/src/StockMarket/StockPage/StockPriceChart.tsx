@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { PriceStateProp } from "../../type/stokcMarket.type";
 
-export function StockPriceChart({ priceStateProp }: { priceStateProp:PriceStateProp }) {
+export function StockPriceChart({ priceStateProp }: Readonly<{ priceStateProp:PriceStateProp }>) {
   // Pre-populate data array with 30 items with price 0
   const initialData = Array.from({ length: 30 }, (_, index) => ({
     time: index * 5, // Assuming each time interval is 5 seconds
@@ -19,10 +19,10 @@ export function StockPriceChart({ priceStateProp }: { priceStateProp:PriceStateP
       const newPreviousPrices = [...previousPrices];
       const isPositiveChange = Math.random() < 0.5;
 
-      // Generate a random price change (+/- 100)
+      // Generate a random price change (+/- 1000)
       const randomChange = Math.round(Math.random() * 1000);
       let newPrice = isPositiveChange
-        ? basePrice.current + randomChange // Add the random value
+        ? basePrice.current + randomChange 
         : basePrice.current - randomChange;
       newPrice = Math.max(parseFloat(newPrice.toFixed(2)), 0);
 
@@ -50,7 +50,7 @@ export function StockPriceChart({ priceStateProp }: { priceStateProp:PriceStateP
 
     // Cleanup function to clear the interval when component unmounts
     return () => clearInterval(interval);
-  }, [data, previousPrices, currentIndex]); // Re-run effect when data, previousPrices or currentIndex changes
+  }, [data, previousPrices, currentIndex, initialData, priceStateProp]); 
 
   return (
     <div style={{ width: '1000px', height: '500px', margin: '100px auto' }}>
@@ -93,7 +93,7 @@ export function StockPriceChart({ priceStateProp }: { priceStateProp:PriceStateP
         {/* Bars */}
         {data.map((entry, index) => (
           <rect
-            key={index}
+            key={entry.price}
             x={index * 25}
             y={500 - (entry.price/40)}
             width="20"

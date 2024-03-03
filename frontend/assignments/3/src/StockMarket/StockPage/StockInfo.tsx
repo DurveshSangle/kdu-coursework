@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { Avatar, Typography, Select, MenuItem, SelectChangeEvent } from "@mui/material";
 import { deepOrange } from "@mui/material/colors";
 import { PriceStateProp, StockTransaction} from "../../type/stokcMarket.type";
-import { socket } from "./socket";
+import { socket } from "./../socket"
 import { getCurrentTimestamp } from "../../utility/getCurrentTimeStamp";
 import { getCurrentTime } from "../../utility/getCurrentTime";
 import { getCurrentDateFormatted } from "../../utility/getCurrentDate";
@@ -31,10 +31,7 @@ export function StockInfo({ priceStateProp }: { priceStateProp: PriceStateProp }
 
   const percentageChange = ((priceStateProp?.basePrice - priceStateProp?.prevStatePrice) / priceStateProp?.prevStatePrice) * 100;
 
-  socket.on("connect", () => {
-    socket.emit("joinRoom", stockName);
-    
-  })
+  socket.emit("joinRoom", stockName);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -107,7 +104,7 @@ export function StockInfo({ priceStateProp }: { priceStateProp: PriceStateProp }
         </Typography>
       </div>
 
-      <input ref={inputRef} type="text" placeholder="Enter Qty" style={{ margin: "auto", padding: "25x 55px", fontSize:"1.3rem" }} />
+      <input ref={inputRef} type="text" placeholder="Enter Qty" style={{ margin: "auto", padding: "25px 30px", fontSize:"1.3rem" }} />
 
       <button style={{ backgroundColor: "#b2f2bb" }} onClick={handleBuyStock}>Buy</button>
       <button style={{ backgroundColor: "#ffc9c9" }} onClick={handleSellStock}>Sell</button>

@@ -35,6 +35,7 @@ export interface Transaction {
   date: string;
   time: string;
   status: string;
+  filter: boolean;
 }
 
 // types.ts

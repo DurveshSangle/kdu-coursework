@@ -37,7 +37,6 @@ export function StockTransactions() {
     })
 
     socket.on("transaction", (transactionData: Transaction) => {
-      console.log("CRAAAAAAAAAAAAAAAAAZY");
       reduxDispatch(updatePortfolio(transactionData));
     })
 
@@ -48,7 +47,7 @@ export function StockTransactions() {
       socket.off('insufficientBalance');
       socket.off('insufficientHoldings')
     };
-  }, []); // Empty dependency array ensures this effect runs only once on component mount
+  }, [reduxDispatch]);
 
   return (
     <div>
@@ -65,7 +64,7 @@ export function StockTransactions() {
                     {transaction?.timestamp}
                 </div>
               </div>
-              <div>
+              <div style={{color:(transaction.type==='Buy'?'green':'red')}}>
                 {transaction.type}
               </div>
             </div>

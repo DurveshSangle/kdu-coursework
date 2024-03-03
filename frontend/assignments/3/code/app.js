@@ -8,7 +8,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new socketIo.Server(server, {
     cors: {
-        origin: '*'
+        origin: 'http://localhost:5173'
     }
 });
 
@@ -48,7 +48,7 @@ let portfolioTransactions = [];
 
 // Fetch transaction history asynchronously and update portfolioTransactions when resolved
 fetchTransactionHistory().then(data => {
-  portfolioTransactions = data.slice(0, 100);
+  portfolioTransactions = data;
   portfolioTransactions.forEach(transaction => {
     // Extract relevant data from the transaction object
       const { stock_name, stock_symbol, transaction_price, timestamp, status } = transaction;
@@ -62,7 +62,8 @@ fetchTransactionHistory().then(data => {
         price: transaction_price,
         date: dateTime[0],
         time: dateTime[1],
-        status: status
+        status: status,
+        filter: true
       };
       transactionHistory.push(transactionData);
     });

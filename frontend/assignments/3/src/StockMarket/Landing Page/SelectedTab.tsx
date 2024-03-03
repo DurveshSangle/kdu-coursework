@@ -23,16 +23,19 @@ export function SelectedTab() {
 
   //Pagination logic
   const [currentPage, setCurrentPage] = useState(1);
-  let dataList:Stock[];
+  let dataList: Stock[];
   if (tab === 1) {
-    dataList = stockList;
+    dataList = [...stockList]; 
+  } else {
+    dataList = [...watchList]; 
   }
-  else {
-    dataList = watchList;
-  }
+  
+  // Sort dataList by stock_name in ascending order
+ 
+  
+
   const itemsPerPage = 10;
   const numberOfPages = Math.ceil(dataList.length / itemsPerPage) + (dataList.length % itemsPerPage == 0 ? -1 : 0);
-  
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const handlePageChange = (_event: unknown, page:number) => {
@@ -63,12 +66,11 @@ export function SelectedTab() {
         <TableBody >
           {displayedData.map((stock:Stock) => (
             <TableRow
-              component={Link}
-              to={`/stock/${stock.stock_name}`}
               key={stock.stock_symbol}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
+              sx={{ '&:last-child td, &:last-child th': { border: 0}}}
             >
-              <TableCell sx={{ width: '70%' }} align="left">{stock.stock_name}</TableCell>
+              <TableCell component={Link}
+              to={`/stock/${stock.stock_name}`} sx={{ width: '70%', textDecoration:"none" }} align="left">{stock.stock_name}</TableCell>
               <TableCell align="right">{stock.base_price}</TableCell>
               <TableCell align="right"
                 onClick={(watchList.includes(stock)) ? () => handleRemoveFromWatchList(stock) : () => handleAddToWatchList(stock)}
@@ -76,8 +78,8 @@ export function SelectedTab() {
                 onMouseLeave={() => setCurrentlyHovered("")}>
                 {
                   (watchList.includes(stock)) ? 
-                    (stock.stock_name === currentlyHovered ? <CancelIcon /> :<CheckCircleIcon/>) :
-                    (<AddCircleOutlineOutlinedIcon/>)
+                    (stock.stock_name === currentlyHovered ? <CancelIcon sx={{fill:"red"}}/> :<CheckCircleIcon style={{fill:"#1976d2"}}/>) :
+                    (<AddCircleOutlineOutlinedIcon style={{fill:"#1976d2"}}/>)
                 }
               </TableCell>
             </TableRow>

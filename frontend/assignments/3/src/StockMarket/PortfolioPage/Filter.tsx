@@ -18,31 +18,39 @@ export function Filter() {
   const [selectedStocks, setSelectedStocks] = useState<string[]>([]);
 
   useEffect(() => {
-    const filteredTransactions:Transaction[] = transactionHistory.filter(transaction => {
+    const filteredTransactions:Transaction[] = transactionHistory.map(transaction => {
+      // Create a copy of the transaction object
+      const updatedTransaction = { ...transaction };
+    
       // Filter by search query
-      if (searchQuery && !transaction.stockName.toLowerCase().includes(searchQuery.toLowerCase())) {
-        return false;
+      if (searchQuery && !updatedTransaction.stockName.toLowerCase().includes(searchQuery.toLowerCase())) {
+        return null; // Return null for transactions that don't match the search query
       }
+    
       // Filter by start date
-      if (startDate && new Date(transaction.date) < new Date(startDate)) {
-        return false;
+      if (startDate && new Date(updatedTransaction.date) < new Date(startDate)) {
+        return null; // Return null for transactions that occurred before the start date
       }
+    
       // Filter by end date
-      if (endDate && new Date(transaction.date) > new Date(endDate)) {
-        return false;
+      if (endDate && new Date(updatedTransaction.date) > new Date(endDate)) {
+        return null; // Return null for transactions that occurred after the end date
       }
+    
       // Filter by status
-      if (statusFilters.length > 0 && !statusFilters.includes(transaction.status)) {
-        return false;
+      if (statusFilters.length > 0 && !statusFilters.includes(updatedTransaction.status)) {
+        return null; // Return null for transactions that don't match the status filter
       }
+    
       // Filter by selected stocks
-      if (selectedStocks.length > 0 && !selectedStocks.includes(transaction.stockName)) {
-        return false;
-      }
-      return true;
-    });
-    // console.log(filteredTransactions);
-    reduxDispatch(setDisplayTransactions(filteredTransactions));
+      updatedTransaction.filter = selectedStocks.includes(updatedTransaction.stockName)
+      
+      if (selectedStocks.length === 0) updatedTransaction.filter = true;
+    
+      return updatedTransaction; // Return the updated transaction object
+    }).filter(Boolean); // Remove null values from the array
+    
+    reduxDispatch(setDisplayTransactions(filteredTransactions));    
   }, [searchQuery,startDate, endDate, statusFilters, selectedStocks, reduxDispatch, transactionHistory])
   
   const handleStatusChange = (status: string) => {

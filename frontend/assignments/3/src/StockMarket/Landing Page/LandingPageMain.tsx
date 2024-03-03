@@ -11,13 +11,13 @@ export function LandingPageMain() {
   const stockFetchState = useSelector((state: RootState) => state.stockData.stockFetchState);
 
   return (
-  <>
+    <>
       {(stockFetchState === "pending") ? <CircularProgress /> : 
         <>
-        <TabSwitch />
+          <TabSwitch />
           <SelectedTab />
         </>
       }
-      </>
+    </>
   )
 }
