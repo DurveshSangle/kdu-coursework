@@ -1,0 +1,10 @@
+1) When Iam on page 3 of explore and switches to watchList, page 3 opens... 
+Need to stop this behaviour
+
+2) To include google font Poppin
+
+3) Users should be able to click on a particular stock to track it in detail.
+4) Stocks should be sorted by name 
+
+5) Spinner added, but cant show the demo, find a way to do that
+

@@ -1,0 +1,19 @@
+{
+  "name": "frontend-mini-project-server",
+  "version": "1.0.0",
+  "description": "Fontend Mini Project Server",
+  "main": "./code/app.js",
+  "scripts": {
+    "test": "nodemon ./code/app.js"
+  },
+  "author": "Durvesh Sangle",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.3",
+    "socket.io": "^4.7.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
