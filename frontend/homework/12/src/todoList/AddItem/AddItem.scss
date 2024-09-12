@@ -1,0 +1,22 @@
+.add-items {
+    h2 {
+        font-weight: 500;
+        margin-bottom: 5px;
+        font-size: 25px;
+    }
+    input {
+        padding: 8px;
+        margin-right: 5px;
+        margin-left: 10px;
+        font-size: 15px;
+        border: 1px solid #eeeeee;
+    }
+    button {
+        padding: 10px 10px;
+        color: white;
+        background-color: #343a40;
+        font-size: 15px;
+        border: 0;
+        border-radius: 5px;
+    }
+}
