@@ -1,0 +1,33 @@
+.quote {
+    padding:15px 20px;
+    background-color: #0C359E;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    color: #F6F5F5;
+
+    h1 {
+        padding: 0;
+        text-align: center;
+        font-weight: 400;
+    }
+
+    p{
+        text-align: right;
+        margin: 3px;
+    }
+
+    p:nth-of-type(2){
+        font-weight: 100;
+        margin-bottom: 10px;
+    }
+
+    button {
+        font-size: 15px;
+        padding: 10px;
+        font-weight: 600;
+        border-radius: 20px;
+        background-color: #EE99C2;
+        border: 1px solid #EE99C2;
+        margin-right: 5px;
+    }
+}
