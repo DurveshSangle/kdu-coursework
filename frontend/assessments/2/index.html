@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KDU Stock Market</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div id="title">KDU Stock Market Dashboard</div>
+    </header>
+
+    <main>
+      <div class="main-container">
+        <div class="upper-main-container">
+          <div id="stock-info"></div>
+          <div id="stock-price">
+            <p>Price</p>
+          </div>
+          <div id="qty-input">
+            <input type="number" placeholder="Enter Qty" id="input" />
+          </div>
+          <button id="buy-btn">BUY</button>
+          <button id="sell-btn">SELL</button>
+        </div>
+        <div class="lower-main-container"></div>
+      </div>
+      <!-- Side container with transaction history of user -->
+      <div id="side-container">
+        <p>History</p>
+      </div>
+    </main>
+
+    <script
+      src="https://cdn.socket.io/4.7.4/socket.io.min.js"
+      integrity="sha384-Gr6Lu2Ajx28mzwyVR8CFkULdCU7kMlZ9UthllibdOSo6qAiN+yXNHqtgdTvFXMT4"
+      crossorigin="anonymous"
+    ></script>
+    <script src="index.js"></script>
+  </body>
+</html>
