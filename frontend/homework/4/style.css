@@ -1,0 +1,28 @@
+.container {
+  font-family: Poppins;
+  text-align: center;
+  border: 5px double black;
+  margin: 40px 40px;
+  padding: 10px;
+}
+.container .input-and-btn {
+  padding: 10px;
+}
+.container #items > li {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  padding: 10px 20px;
+  align-items: center;
+  border: 2px solid black;
+}
+.container input {
+  padding: 5px;
+  margin: 5px;
+  border-radius: 10px;
+}
+.container button {
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 10px;
+}/*# sourceMappingURL=style.css.map */
