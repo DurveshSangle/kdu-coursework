@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>X</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="leftPanel" id="left">
+        <div class="navigation-section">
+          <div class="xLogo">
+            <img src="icons/logo.svg " alt="" />
+          </div>
+          <div class="mobile-profile-handle">
+            <div class="profile-plus">
+              <img src="images/profile pic.png" alt="" id="profile-image" />
+              <img src="icons/plus.svg" alt="" id="plus-icon" />
+            </div>
+            <div class="name-handle">
+              <p>Nitesh Gupta</p>
+              <p>@nik_hck</p>
+            </div>
+            <div class="followers">
+              <p><span>1</span> Following</p>
+              <p><span>0</span> Followers</p>
+            </div>
+          </div>
+          <div class="navItems">
+            <nav>
+              <a href="" class="desktopNavItems">
+                <div class="navLinks">
+                  <div>
+                    <img src="icons/home.svg" alt="" />
+                  </div>
+                  <div>Home</div>
+                </div>
+              </a>
+              <a href="" class="desktopNavItems"
+                ><div class="navLinks">
+                  <div>
+                    <img src="icons/search.svg" alt="" />
+                  </div>
+                  <div>Explore</div>
+                </div></a
+              >
+              <a href="" class="desktopNavItems"
+                ><div class="navLinks">
+                  <div>
+                    <img src="icons/notification.svg" alt="" />
+                  </div>
+                  <div>Notifications</div>
+                </div></a
+              >
+              <a href="" class="desktopNavItems"
+                ><div class="navLinks">
+                  <div>
+                    <img src="icons/message.svg" alt="" />
+                  </div>
+                  <div>Messages</div>
+                </div></a
+              >
+              <a href="" class="desktopNavItems">
+                <div class="navLinks">
+                  <div>
+                    <img src="icons/grok.svg" alt="" />
+                  </div>
+                  <div>Grok</div>
+                </div>
+              </a>
+              <a href="">
+                <div class="navLinks">
+                  <div>
+                    <img src="icons/list.svg" alt="" />
+                  </div>
+                  <div>Lists</div>
+                </div>
+              </a>
+              <a href="">
+                <div class="navLinks">
+                  <div>
+                    <img src="icons/bookmark.svg" alt="" />
+                  </div>
+                  <div>Bookmarks</div>
+                </div>
+              </a>
+              <a href="">
+                <div class="navLinks">
+                  <div>
+                    <img src="icons/communities.svg" alt="" />
+                  </div>
+                  <div>Communities</div>
+                </div>
+              </a>
+              <a href="" id="one">
+                <div class="navLinks">
+                  <div>
+                    <img src="icons/logo.svg" alt="" />
+                  </div>
+                  <div>Premium</div>
+                </div>
+              </a>
+              <a href="" id="two">
+                <div class="navLinks">
+                  <div>
+                    <img src="icons/person.svg" alt="" />
+                  </div>
+                  <div>Profile</div>
+                </div>
+              </a>
+              <a href="" class="desktopNavItems">
+                <div class="navLinks">
+                  <div>
+                    <img src="icons/more.svg" alt="" />
+                  </div>
+                  <div>More</div>
+                </div>
+              </a>
+
+              <!-- Mobile View NavItem -->
+              <a href="" class="mobileNavItems">
+                <div class="navLinks">
+                  <div>
+                    <img src="icons/monetization.svg" alt="" />
+                  </div>
+                  <div>Monetization</div>
+                </div>
+              </a>
+              <a href="" class="mobileNavItems">
+                <div class="navLinks">
+                  <div>
+                    <img src="icons/settings.svg" alt="" />
+                  </div>
+                  <div>Security and privacy</div>
+                </div>
+              </a>
+              <a href="" class="mobileNavItems">
+                <div class="navLinks">
+                  <div>
+                    <img src="icons/logout.svg" alt="" />
+                  </div>
+                  <div>Log out</div>
+                </div>
+              </a>
+            </nav>
+          </div>
+          <div class="postBtn">
+            <button id="post-button">Post</button>
+          </div>
+          <div class="profile">
+            <button>
+              <div class="icon-plus-username">
+                <img src="images/profile pic.png" alt="" id="profile-image" />
+                <div class="user-name">
+                  <p>Nitesh Gupta</p>
+                  <p>@nik_hck</p>
+                </div>
+              </div>
+              <img src="icons/three_dots.svg" alt="" id="three-dots" />
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="rightPanel">
+        <button class="floating-tweet-box-icon">
+          <img src="icons/feather.svg" alt="" />
+        </button>
+        <div class="top-bar">
+          <button class="profile-icon" style="background-color: black; border: 0">
+            <img src="images/profile pic.png" alt="" id="profile-image" />
+          </button>
+          <img src="icons/logo.svg " alt="" />
+          <img src="icons/settings.svg " alt="" />
+        </div>
+        <div class="tweet-box">
+          <div class="super-upper-part">
+            <div class="back-btn">
+              <img src="icons/back.svg" alt="" />
+            </div>
+            <div class="post-draft">
+              <button class="draft-btn">Drafts</button>
+              <button id="tweet-btn" class="tweet-btns inactive-button">Post</button>
+            </div>
+          </div>
+          <div class="upper-part">
+            <img src="images/profile pic.png" alt="" id="profile-image" />
+            <input
+              type="text"
+              placeholder="What is happening?!"
+              class="post-input"
+            />
+          </div>
+          <div class="middle-part">
+            <img src="icons/world.svg" alt="" />
+            <p>Everyone can reply</p>
+          </div>
+          <div class="lower-part">
+            <div class="attach-icons">
+              <a href="">
+                <img src="icons/image.svg" alt="" />
+              </a>
+              <a href="">
+                <img src="icons/gif.svg" alt="" />
+              </a>
+              <a href="">
+                <img src="icons/poll.svg" alt="" />
+              </a>
+              <a href="">
+                <img src="icons/emoji.svg" alt="" />
+              </a>
+              <a href="">
+                <img src="icons/schedule.svg" alt="" />
+              </a>
+              <a href="">
+                <img src="icons/location.svg" alt="" />
+              </a>
+            </div>
+            <button class="tweet-btns inactive-button" id="desktop-view-btn">
+              Post
+            </button>
+          </div>
+        </div>
+
+        <div class="posts">
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
