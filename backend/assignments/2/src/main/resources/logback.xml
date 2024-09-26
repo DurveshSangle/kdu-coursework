@@ -1,0 +1,29 @@
+<configuration>
+    <!-- Log to the console -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Log to a file -->
+    <appender name="file" class="ch.qos.logback.core.FileAppender">
+        <file>${LOG_FILE:-logs/your-log-file.log}</file>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Choose the appropriate appender based on the active profile -->
+    <springProfile name="dev">
+        <root level="DEBUG">
+            <appender-ref ref="file" />
+        </root>
+    </springProfile>
+
+    <springProfile name="prod">.
+        <root level="INFO">
+            <appender-ref ref="console" />
+        </root>
+    </springProfile>
+</configuration>
